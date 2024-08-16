@@ -7,6 +7,8 @@ DROP TABLE IF EXISTS IngestaNativa;
 DROP TABLE IF EXISTS Provincia;
 DROP TABLE IF EXISTS Region;
 
+-- DELETE FROM Hormiga;
+
 CREATE TABLE Region (
      IdRegion INTEGER PRIMARY KEY AUTOINCREMENT 
     ,NombreRegion VARCHAR(50) NOT NULL UNIQUE
@@ -46,7 +48,7 @@ CREATE TABLE Hormiga (
     ,FOREIGN KEY (IdProvincia) REFERENCES Provincia(IdProvincia)
     ,FOREIGN KEY (IdGenoAlimento) REFERENCES GenoAlimento(IdGenoAlimento)
     ,FOREIGN KEY (IdIngesta) REFERENCES IngestaNativa(IdIngesta)
-    ,CHECK (Estado IN ("X", "A"))
+    ,CHECK (Estado IN ("VIVA", "MUERTA"))
 );
 
 
@@ -92,7 +94,8 @@ INSERT INTO IngestaNativa (TipoAnimal)
      ("Carnívoro")
     ,("Hervíboro")
     ,("Omnívoro")
-    ,("Insectívoro");
+    ,("Insectívoro")
+    ,("Nectarívora");
 
 INSERT INTO GenoAlimento (Gen)
      VALUES
@@ -105,3 +108,4 @@ INSERT INTO Sexo (TipoSexo)
      ("Macho")
     ,("Hembra")
     ,("Asexual")
+
